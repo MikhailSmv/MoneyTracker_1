@@ -15,6 +15,7 @@ public class ItemsFragment extends android.support.v4.app.Fragment{
     public static final int TYPE_EXPENSE = 0;
     public static final int TYPE_INCOME = 1;
 
+
     public static final String KEY_TYPE = "TYPE";
 
     @Nullable
@@ -30,5 +31,7 @@ public class ItemsFragment extends android.support.v4.app.Fragment{
         RecyclerView recycler = view.findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(new ItemsAdapter());
+
+        }
     }
-}
+
