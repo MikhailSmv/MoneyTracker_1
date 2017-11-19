@@ -13,19 +13,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
     private List<Item> items = new ArrayList<>();
 
-    public ItemsAdapter() {
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
-        items.add(new Item("Молоко",35));
+    public void setItems(List<Item> items) {
+        this.items = items;
+        notifyDataSetChanged();
     }
+
+
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,8 +28,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-    holder.price.setText(String.valueOf(items.get(position).getPrice()));
-    holder.name.setText(items.get(position).getName());
+    Item item = items.get(position);
+    holder.bind(item);
     }
 
 
@@ -55,5 +48,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
             name = itemView.findViewById(R.id.item_name);
             price = itemView.findViewById(R.id.item_price);
         }
-    }
+
+
+         public void bind(Item item) {
+            name.setText(item.name);
+            price.setText(String.valueOf(item.price));
+         }
+     }
 }

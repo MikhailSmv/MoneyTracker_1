@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class MainPagerAdapter extends FragmentPagerAdapter {
     private final static int PAGE_EXPENSES = 0;
     private final static int PAGE_INCOMES = 1;
-    private final static int PAGE_BALANSE = 2;
+    private final static int PAGE_BALANCE = 2;
 
 
     private  String[] titles;
@@ -24,23 +24,15 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case PAGE_EXPENSES: {
-                Bundle bundle = new Bundle();
-                bundle.putInt(ItemsFragment.KEY_TYPE, ItemsFragment.TYPE_EXPENSE);
-                Fragment fragment = new ItemsFragment();
-                fragment.setArguments(bundle);
-                return fragment;
+                return ItemsFragment.createItemsFragment(Item.TYPE_EXPENSE);
             }
 
             case PAGE_INCOMES: {
-                Bundle bundle = new Bundle();
-                bundle.putInt(ItemsFragment.KEY_TYPE, ItemsFragment.TYPE_INCOME);
-                Fragment fragment = new ItemsFragment();
-                fragment.setArguments(bundle);
-                return fragment;
+                return ItemsFragment.createItemsFragment(Item.TYPE_INCOME);
             }
-            case PAGE_BALANSE:
+            case PAGE_BALANCE:
                 Bundle bundle = new Bundle();
-                bundle.putInt(BalanceFragment.KEY_TYPE,BalanceFragment.TYPE_BALANCE);
+                bundle.putString(BalanceFragment.KEY_TYPE,BalanceFragment.TYPE_BALANCE);
 
                 Fragment fragment = new BalanceFragment();
                 fragment.setArguments(bundle);
