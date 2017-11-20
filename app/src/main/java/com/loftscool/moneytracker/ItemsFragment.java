@@ -1,5 +1,6 @@
 package com.loftscool.moneytracker;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +8,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import com.loftscool.moneytracker.api.Api;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
 import static com.loftscool.moneytracker.Item.TYPE_UNKNOWN;
 
 public class ItemsFragment extends android.support.v4.app.Fragment{
@@ -65,7 +68,17 @@ public class ItemsFragment extends android.support.v4.app.Fragment{
         RecyclerView recycler = view.findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
+        FloatingActionButton fab = view.findViewById(R.id.fab_add);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AddActivity.class);
+                intent.putExtra(AddActivity.EXTRA_TYPE,type);
+                startActivityForResult(intent,AddActivity.RC_ADD_ITEM);
+                startActivity(intent);
 
+            }
+        });
 
         loadItems();
 
@@ -123,5 +136,13 @@ public class ItemsFragment extends android.support.v4.app.Fragment{
         Toast.makeText(getContext(),error,Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==AddActivity.RC_ADD_ITEM && resultCode == RESULT_OK) {
+            Item item = (Item) data.getSerializableExtra(AddActivity.RESULT_ITEM);
+            Toast.makeText(getContext(), item.name,Toast.LENGTH_LONG).show();
+        }
     }
+}
 

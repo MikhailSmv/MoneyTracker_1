@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_pattern"
+    tools:context="com.loftscool.moneytracker.MainActivity">
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_pattern"
-        tools:context="com.loftscool.moneytracker.MainActivity">
+        android:layout_height="wrap_content" />
 
+</android.support.design.widget.AppBarLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:padding="16dp"
             android:background="@color/colorWhite"
@@ -13,33 +28,36 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:elevation="10dp"
+            android:elevation="15dp"
             >
 
             <EditText
-                android:layout_gravity="center_vertical"
-                android:textSize="@dimen/text_size"
-                android:background="@color/colorWhite"
                 android:id="@+id/name"
-                android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="2"
+                android:background="@color/colorWhite"
                 android:hint="@string/title_string"
+                android:inputType="text"
                 android:maxLines="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size"
+                android:layout_width="wrap_content" />
 
             <EditText
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/text_size"
+                android:layout_weight="1"
                 android:background="@color/colorWhite"
                 android:gravity="right"
-                android:id="@+id/price"
-                android:layout_weight="1"
-                android:inputType="number"
                 android:hint="@string/price_string"
+                android:inputType="number"
                 android:maxLines="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_size"
+                 />
 
             <ImageButton
                 android:id="@+id/add"
@@ -47,10 +65,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:clickable="false"
-                android:src="@drawable/ic_add_black_24dp" />
+                android:src="@drawable/ic_add_black_24dp"
+                android:background="@color/colorWhite"/>
 
         </LinearLayout>
-
-    </FrameLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.design.widget.CoordinatorLayout>
 
 
