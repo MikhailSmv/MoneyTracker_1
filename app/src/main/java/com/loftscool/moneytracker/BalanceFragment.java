@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 public class BalanceFragment extends android.support.v4.app.Fragment{
 
-    public static final int TYPE_BALANCE = 2;
+    public static final String TYPE_BALANCE = "balance";
     public static final String KEY_TYPE = "TYPE";
 
     @Nullable
